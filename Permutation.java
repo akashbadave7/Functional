@@ -10,7 +10,7 @@ class Permutation
         	Permutation permutation = new Permutation();
         	permutation.permute(str, 0, n-1);
     	}
-	private void permute(String str, int l, int r)
+	public static void permute(String str, int l, int r)
     	{
         	if (l == r)
             		System.out.println(str);
@@ -24,7 +24,7 @@ class Permutation
             		}
         	}
     	}
-	public String swap(String a, int i, int j)
+	public static String swap(String a, int i, int j)
 	{
 		char temp;
 		char[] charArray = a.toCharArray();
