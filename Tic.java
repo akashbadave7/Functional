@@ -1,91 +1,251 @@
-import java.util.*;
-    class tic
-    {
-       public static void main(String[] args) 
-       {
-        Scanner input = new Scanner(System.in);
-        String[][] board = 
-        {
-            {" ", " ", " "},
-            {" ", " ", " "},
-            {" ", " ", " "}
-        };
-        boolean done = false;
-        int player = 1;
-        int row = 0;
-        int col = 0;
-        while (done != true) 
-        {
-            System.out.println("Enter the row and column for your next move");
-            row = input.nextInt();
-            col = input.nextInt();
-            if (player == 1) 
-            {
-                board[row][col] = "X";
-                player = 2;
-            } 
-            else 
-            {
-                board[row][col] = "O";
-                player = 1;
-            }
-            printBoard(board);
-
-        }
-        checkForWinner(board);
-
-      }
-
-      public static void printBoard(String[][] board) 
-      {
-        for (int row = 0; row < 3; row++) 
-        {
-            for (int col = 0; col < 3; col++) 
-            {
-                System.out.print("|" + board[row][col] + "|");
-            }
-            System.out.println();
-            System.out.println("-------");
-        }
-      }
-      public static boolean checkForWinner(String[][] board)
-       {
-        // checkForWinner() method determines if a pattern of data stored
-        // in the 2 D char array indicates the a player has won the game.
-
-            boolean flag = false;
-            boolean flag1 = false;
-            boolean flag2 = false;
-            boolean flag3 = false;
-            boolean flag4 = false;
-
-            // checks the contents of each row for matching data   
-            for (int i = 0; i <= 2; i++)
-            {
-                if ((board[i][0] == board[i][1] && board[i][1] == board[i][2]) && board[i][2] != ' ') 
-                    flag1 = true;
-            }
-
-             // checks the contents of each column for matching data
-            for (int j = 0; j <= 2; j++)
-            {
-                if ((board[0][j] == board[1][j] && board[1][j] == board[2][j]) && board[2][j] != ' ') 
-                    flag2 = true;
-            }
-
-            // checks the contents of one diagonal for matching data
-            if ((board[0][0] == board[1][1] && board[1][1] == board[2][2]) && board[2][2] != ' ') 
-                    flag3 = true;
-
-            // checks the contents of the other diagonal for matching data
-            if ((board[0][2] == board[1][1] && board[1][1] == board[2][0]) && board[2][0] != ' ') 
-                    flag4 = true;
-
-            // checks if any of the previous conditions evaluated to true        
-            if (flag1 == true || flag2 == true || flag3 == true || flag4 == true)
-                flag = true;
-
-           // returns true if a winner was found; returns false is no winner     
-           return flag;
-       } // end of checkForWinner method
+public class TicTacToe {
+2
+ 
+3
+    private char[][] board; 
+4
+    private char currentPlayerMark;
+5
+             
+6
+    public TicTacToe() {
+7
+        board = new char[3][3];
+8
+        currentPlayerMark = 'x';
+9
+        initializeBoard();
+10
     }
+11
+     
+12
+     
+13
+    // Set/Reset the board back to all empty values.
+14
+    public void initializeBoard() {
+15
+         
+16
+        // Loop through rows
+17
+        for (int i = 0; i < 3; i++) {
+18
+             
+19
+            // Loop through columns
+20
+            for (int j = 0; j < 3; j++) {
+21
+                board[i][j] = '-';
+22
+            }
+23
+        }
+24
+    }
+25
+     
+26
+     
+27
+    // Print the current board (may be replaced by GUI implementation later)
+28
+    public void printBoard() {
+29
+        System.out.println("-------------");
+30
+         
+31
+        for (int i = 0; i < 3; i++) {
+32
+            System.out.print("| ");
+33
+            for (int j = 0; j < 3; j++) {
+34
+                System.out.print(board[i][j] + " | ");
+35
+            }
+36
+            System.out.println();
+37
+            System.out.println("-------------");
+38
+        }
+39
+    }
+40
+     
+41
+     
+42
+    // Loop through all cells of the board and if one is found to be empty (contains char '-') then return false.
+43
+    // Otherwise the board is full.
+44
+    public boolean isBoardFull() {
+45
+        boolean isFull = true;
+46
+         
+47
+        for (int i = 0; i < 3; i++) {
+48
+            for (int j = 0; j < 3; j++) {
+49
+                if (board[i][j] == '-') {
+50
+                    isFull = false;
+51
+                }
+52
+            }
+53
+        }
+54
+         
+55
+        return isFull;
+56
+    }
+57
+     
+58
+     
+59
+    // Returns true if there is a win, false otherwise.
+60
+    // This calls our other win check functions to check the entire board.
+61
+    public boolean checkForWin() {
+62
+        return (checkRowsForWin() || checkColumnsForWin() || checkDiagonalsForWin());
+63
+    }
+64
+     
+65
+     
+66
+    // Loop through rows and see if any are winners.
+67
+    private boolean checkRowsForWin() {
+68
+        for (int i = 0; i < 3; i++) {
+69
+            if (checkRowCol(board[i][0], board[i][1], board[i][2]) == true) {
+70
+                return true;
+71
+            }
+72
+        }
+73
+        return false;
+74
+    }
+75
+     
+76
+     
+77
+    // Loop through columns and see if any are winners.
+78
+    private boolean checkColumnsForWin() {
+79
+        for (int i = 0; i < 3; i++) {
+80
+            if (checkRowCol(board[0][i], board[1][i], board[2][i]) == true) {
+81
+                return true;
+82
+            }
+83
+        }
+84
+        return false;
+85
+    }
+86
+     
+87
+     
+88
+    // Check the two diagonals to see if either is a win. Return true if either wins.
+89
+    private boolean checkDiagonalsForWin() {
+90
+        return ((checkRowCol(board[0][0], board[1][1], board[2][2]) == true) || (checkRowCol(board[0][2], board[1][1], board[2][0]) == true));
+91
+    }
+92
+     
+93
+     
+94
+    // Check to see if all three values are the same (and not empty) indicating a win.
+95
+    private boolean checkRowCol(char c1, char c2, char c3) {
+96
+        return ((c1 != '-') && (c1 == c2) && (c2 == c3));
+97
+    }
+98
+     
+99
+     
+100
+    // Change player marks back and forth.
+101
+    public void changePlayer() {
+102
+        if (currentPlayerMark == 'x') {
+103
+            currentPlayerMark = 'o';
+104
+        }
+105
+        else {
+106
+            currentPlayerMark = 'x';
+107
+        }
+108
+    }
+109
+     
+110
+     
+111
+    // Places a mark at the cell specified by row and col with the mark of the current player.
+112
+    public boolean placeMark(int row, int col) {
+113
+         
+114
+        // Make sure that row and column are in bounds of the board.
+115
+        if ((row >= 0) && (row < 3)) {
+116
+            if ((col >= 0) && (col < 3)) {
+117
+                if (board[row][col] == '-') {
+118
+                    board[row][col] = currentPlayerMark;
+119
+                    return true;
+120
+                }
+121
+            }
+122
+        }
+123
+         
+124
+        return false;
+125
+    }
+126
+}

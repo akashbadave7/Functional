@@ -9,7 +9,10 @@ class Coupon
 		System.out.println("---------------------------------------------------------------");
 		distinct(arr);
 	}
+<<<<<<< HEAD
 	// to generate random coupon number
+=======
+>>>>>>> ca94437120a68ee8dfa56c6bb3071a8ab979a738
 	public static void random(int n,int arr[])
 	{
 		for(int i=0 ; i<n ; i++)
@@ -24,7 +27,10 @@ class Coupon
 		}
 		System.out.println();
 	}
+<<<<<<< HEAD
 	// to eliminate duplicate coupon number and print unique coupon number
+=======
+>>>>>>> ca94437120a68ee8dfa56c6bb3071a8ab979a738
 	public static void distinct(int arr[])
 	{
 		for (int i = 0; i < arr.length; i++) 

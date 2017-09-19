@@ -1,12 +1,19 @@
 class Gambler
 {
 	public static void main(String args[])
+<<<<<<< HEAD
 	{	// to read value as command line argument
+=======
+	{
+>>>>>>> ca94437120a68ee8dfa56c6bb3071a8ab979a738
 		int stake = Integer.parseInt(args[0]);
                 int goal = Integer.parseInt(args[1]);
                 int times = Integer.parseInt(args[2]);
 		int bets =0,win=0,loss=0;
+<<<<<<< HEAD
 		// to calculate win or loss
+=======
+>>>>>>> ca94437120a68ee8dfa56c6bb3071a8ab979a738
 		for (int i=1 ; i<=times ; i++)
 		{
 			int cash = stake;

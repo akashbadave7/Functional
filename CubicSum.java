@@ -16,7 +16,10 @@ class CubicSum
 		System.out.println("Number of distinct triplets : "+count);
 		
 	}
+<<<<<<< HEAD
 	// to find triplet of sum is equal to zero
+=======
+>>>>>>> ca94437120a68ee8dfa56c6bb3071a8ab979a738
 	public static int find(int a[])
 	{	
 		int count=0;
