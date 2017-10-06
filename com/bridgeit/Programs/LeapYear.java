@@ -1,5 +1,7 @@
 package com.bridgeit.Programs;
 
+import java.util.Scanner;
+
 import com.bridgeit.utility.Utility;
 
 class LeapYear
@@ -9,7 +11,9 @@ class LeapYear
 		try
 		{
 			new Utility();
-			int year = Integer.parseInt(args[0]);
+			Scanner scanner = new Scanner(System.in);
+			System.out.println("Enter the year");
+			int year = scanner.nextInt();
 			// checking weather year is 4 digit
 			boolean res =  false;
 			if(year >999)

@@ -5,27 +5,21 @@ import java.io.*;
 import java.util.Scanner;
 
 
-class Array
+public class Array
 {
 	public static void main(String args[])
 	{	
-		// to read size of row and col as coomand line argument
-		int row = Integer.parseInt(args[0]);
-		int col = Integer.parseInt(args[1]);
-		Scanner s = new Scanner(System.in);
-		// to print the element
-		PrintWriter p = new PrintWriter(System.out);
-		// creating an array of size [row*col]		
-		int arr[][] = new int[row][col];
-		p.println("Enter array Elements:");
-		p.flush();
-		Utility.readArrayElement(arr,row,col);
-		p.println("Array element are:");
-		p.flush();
-		//printing array element
-		Utility.printArrayElement(arr,row,col);
-		p.close();
-		System.out.println();
-		s.close();
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter row size");
+		int row = scanner.nextInt();
+		System.out.println("Enter column size");
+		int column = scanner.nextInt();
+
+		System.out.println("Enter user choice");
+		System.out.println("1. Integer");
+		System.out.println("2. String");
+		System.out.println("3. Double");
+		int choice = scanner.nextInt();
+		Utility.input(row,column,choice);
 	}
 }

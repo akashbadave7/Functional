@@ -7,18 +7,19 @@ class CubicSum
 {
 	public static void main(String args[])
 	{
-		Utility u = new Utility();
-		Scanner s = new Scanner(System.in);
+		Utility utiliy = new Utility();
+		Scanner scanner = new Scanner(System.in);
 		System.out.println("Enter the array size:");
-		int n = s.nextInt();
-		int a[] = new int[n];
+		int n = scanner.nextInt();
+		int array[] = new int[n];
 		System.out.println("Enter the array elements");
-		for(int i=0 ; i<a.length; i++)
+		for(int i=0 ; i<array.length; i++)
 		{
-			a[i] = s.nextInt();
+			Integer element = scanner.nextInt();
+			array[i] = element;
 		}
-		int count = u.find(a);
+		Integer count = utiliy.find(array);
 		System.out.println("Number of distinct triplets : "+count);	
-		s.close();
+		scanner.close();
 	}
 }

@@ -16,11 +16,11 @@ class FlipCoin
 			else
 				head++;	
 		}
-		int headper = (head*100)/n; // calculate head percentage
-		int tailper = (tail*100)/n; // calculate tail percentage
+		int headpercentage = (head*100)/n; // calculate head percentage
+		int tailpercentage = (tail*100)/n; // calculate tail percentage
 		System.out.println("Head : "+head+" Times");
 		System.out.println("Tail : "+tail+" Times");
-		System.out.println("Head Percentage : "+headper+"%");
-		System.out.println("Tail percentage : "+tailper+"%");
+		System.out.println("Head Percentage : "+headpercentage+"%");
+		System.out.println("Tail percentage : "+tailpercentage+"%");
 	}
 }

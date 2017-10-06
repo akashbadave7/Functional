@@ -1,21 +1,35 @@
 package com.bridgeit.Programs;
 
+import java.util.HashSet;
+import java.util.Scanner;
+
 public class Factors 
 {
 	public static void main(String[] args) 
 	{ 
 		// command-line argument
-    	long n = Long.parseLong(args[0]);
-    	System.out.print("The prime factors are : ");
-    	// for each potential factor
-    	for (long i = 2; i*i <= n; i++) 
-		{	// repeatately divide the number
-    		while (n % i == 0) 
-			{
-        		System.out.print(i + " "); 
-        		n = n / i;
+    	Scanner scanner = new Scanner(System.in);
+    	System.out.println("Enter the number");
+    	HashSet<Integer> hs = new HashSet<Integer>();
+    	int number = scanner.nextInt();
+    	int i=2;
+    	while(number>1)
+    	{
+    		for (int j=0;j<i/2;j++)
+    		{
+    			if(number%i == 0)
+    			{
+    				hs.add(i);
+    				number=number/i;
+    			}
+    			else
+    				i++;
     		}
+    	 }
+    	for(Integer ele:hs)
+    	{
+    		System.out.print(ele +" ");
     	}
-		System.out.println();
 	}
+	
 }

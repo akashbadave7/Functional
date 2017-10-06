@@ -4,6 +4,7 @@ class Gambler
 {
 	public static void main(String args[])
 	{	// to read value as command line argument
+		
 		int stake = Integer.parseInt(args[0]);
         int goal = Integer.parseInt(args[1]);
         int times = Integer.parseInt(args[2]);

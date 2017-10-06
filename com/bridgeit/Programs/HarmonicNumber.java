@@ -12,6 +12,10 @@ class HarmonicNumber
 		{
 			har_num += 1.0/i;
 		}
+		/*for(int i=1;i<=n;i++)
+		{
+			System.out.print("1/"+i+"+");
+		}*/
 		System.out.println(har_num);
 	}
 }

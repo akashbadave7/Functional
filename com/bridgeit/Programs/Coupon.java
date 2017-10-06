@@ -1,13 +1,23 @@
 package com.bridgeit.Programs;
+import java.util.Scanner;
+
 import com.bridgeit.utility.*;
 class Coupon
 {
-	public static void main(String args[])
+	/**
+	 * @param args
+	 * @author akash
+	 * <p>
+	 */
+	public static void main(String args[]) 
 	{
-		int n = 10;
-		int arr[] = new int[n];
-		Utility.random(n,arr);
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter the number of coupon");
+		int n = scanner.nextInt();
+		int array[] = new int[n];
+		Utility.random(n,array);
 		System.out.println("---------------------------------------------------------------");
-		Utility.distinct(arr);
+		Utility.distinct(array);
+		scanner.close();
 	}
 }

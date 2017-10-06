@@ -1,5 +1,6 @@
 package com.bridgeit.Programs;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class TicTacToe
@@ -130,6 +131,7 @@ public class TicTacToe
 
     public void makeMove(Scanner s, String play) 
     {
+    	Random random = new Random();
         int r;
         int c;
         Boolean done = false;
@@ -137,32 +139,41 @@ public class TicTacToe
         {
             r = -1;
             c = -1;
-            System.out.println ("Enter coordinates to play your " + play);
-            if (s.hasNextInt()) 
-            {  
-                r = s.nextInt();
-            }
-            if (s.hasNextInt()) 
+            if(play.equals("O"))
+        	{
+            	r = (int) (Math.random()*3);
+            	c = (int) (Math.random()*3);
+            	board[r][c] = play;
+                return;
+        	}
+            else
             {
-                c = s.nextInt();
-            }
-            else 
-            {
-                s.nextLine();     
-                System.out.println("Both inputs must be integers between 0 and 2.");
-                continue;
-            }
-            
-            if ((r < 0) || (r > 2) || (c < 0) || (c > 2)) 
-            {
-                System.out.println("Both inputs must be integers between 0 and 2.");
-                continue;                
-            } 
+            	System.out.println ("Enter coordinates to play your " + play);
+            	if (s.hasNextInt()) 
+            	{  
+            		r = s.nextInt();
+            	}
+            	if (s.hasNextInt()) 
+            	{
+            		c = s.nextInt();
+            	}
+            	else 
+            	{
+            		s.nextLine();     
+            		System.out.println("Both inputs must be integers between 0 and 2.");
+            		continue;
+            	}
+            	
+            	if ((r < 0) || (r > 2) || (c < 0) || (c > 2)) 
+            	{
+            		System.out.println("Both inputs must be integers between 0 and 2.");
+            		continue;                
+            	} 
             
             else if (board[r][c] != null )
             {  
-                System.out.println("That location is occupied");
-                continue; 
+            		System.out.println("That location is occupied");
+            		continue; 
             }
             else 
             {
@@ -170,8 +181,7 @@ public class TicTacToe
                 return;
             }
         }
-        return;
     }
-    
+    }
     
 }
